@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-flexrect',
@@ -14,6 +14,8 @@ export class FlexrectComponent implements OnInit {
   public y: number = 0;
   public height: number = 0;
   public width: number = 0;
+  public isResizing: boolean = false;
+  public resizeCorner: string = "";
 
   constructor() {}
 
@@ -24,7 +26,19 @@ export class FlexrectComponent implements OnInit {
     this.width = 50;
   }
 
-  
+  onMouseDown(event: MouseEvent,corner: string): void {
+    this.isResizing = true;
+    this.resizeCorner = corner;
+  }
+
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent): void {
+    
+  }
+
+
+
+
 }
 
 
