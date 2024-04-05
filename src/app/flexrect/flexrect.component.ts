@@ -54,6 +54,19 @@ export class FlexrectComponent implements OnInit {
       this.width += deltaX;  
     }
 
+    if (this.resizeCorner == "topLeft"){
+      this.y += deltaY;
+      this.x += deltaX;
+      this.width -= deltaX;
+      this.height -= deltaY;  
+    }
+
+    if (this.resizeCorner == "bottomLeft"){
+      this.x += deltaX;
+      this.width -= deltaX;
+      this.height += deltaY;    
+    }
+
 
 
       this.mouseClickX = event.clientX;
