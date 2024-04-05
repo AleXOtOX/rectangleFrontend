@@ -1,0 +1,17 @@
+.rectangle {
+    fill:rgb(65, 61, 61);
+    stroke: red;
+    stroke-width: 5px;
+}
+
+.cursor {
+    fill:rgb(65, 61, 61);
+    stroke: rgb(18, 1, 1);
+    stroke-width: 5px;
+    cursor: crosshair;
+}
+
+svg {
+    border: 1px solid #aaa;
+    vertical-align: top;
+}

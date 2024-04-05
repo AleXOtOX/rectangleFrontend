@@ -1,7 +1,15 @@
+
 <svg
-  width="120"
-  height="120"
-  viewBox="0 0 120 120"
-  xmlns="http://www.w3.org/2000/svg">
-  <rect [attr.x]="x" [attr.y]="y" [attr.width]="width" [attr.height]="height" />
+  width="500"
+  height="500"
+  xmlns="http://www.w3.org/2000/svg"
+  (mousemove)="onMouseMove($event)"
+  (mouseup)="onMouseUp()">
+  <g>
+  <rect class="rectangle" [attr.x]="x" [attr.y]="y" [attr.width]="width" [attr.height]="height" />
+  <rect (mousedown)="onMouseDown($event,'topLeft')" class="cursor" [attr.x]="x" [attr.y]="y" width="5px" height="5px" />
+  <rect (mousedown)="onMouseDown($event,'topRight')" class="cursor" [attr.x]="x+width" [attr.y]="y" width="5px" height="5px" />
+  <rect (mousedown)="onMouseDown($event,'bottomLeft')" class="cursor" [attr.x]="x" [attr.y]="y+height" width="5px" height="5px" />
+  <rect (mousedown)="onMouseDown($event,'bottomRight')" class="cursor" [attr.x]="x+width" [attr.y]="y+height" width="5px" height="5px" />
+</g>
 </svg>
