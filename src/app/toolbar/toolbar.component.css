@@ -1,6 +1,7 @@
 .toolbar{
-    color:blueviolet;
-    background-color: #999595;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+    font-size: 40px;
 }
 
 .spacer{

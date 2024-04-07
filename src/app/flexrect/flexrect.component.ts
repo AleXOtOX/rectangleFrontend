@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { PersistenceService } from '../persistence.service';
 
 @Component({
   selector: 'app-flexrect',
@@ -18,14 +19,16 @@ export class FlexrectComponent implements OnInit {
   public resizeCorner: string = "";
   public mouseClickX: number = 0;
   public mouseClickY: number = 0;
+  public cornerSize: number = 0;
+  public perimeter: number = 0;
 
-  constructor() {}
+  constructor(
+    private persistence:PersistenceService) {}
 
   ngOnInit() {
-    this.x = 30;
-    this.y = 30;
-    this.height = 200;
-    this.width = 200;
+    this.getRectangle();
+    this.cornerSize = 10;
+    this.perimeter = this.calculatePerimeter();
   }
 
   onMouseDown(event: MouseEvent,corner: string): void {
@@ -71,10 +74,29 @@ export class FlexrectComponent implements OnInit {
 
       this.mouseClickX = event.clientX;
       this.mouseClickY = event.clientY;
+
+      this.perimeter = this.calculatePerimeter();
   }
 
   onMouseUp(): void {
     this.isResizing = false;
+  }
+
+  calculatePerimeter(): number {
+    return ((this.height+this.width)*2);
+  }
+
+  getRectangle(): void{
+    this.persistence.getRectangle().subscribe(
+      rectangle => {
+        this.x = rectangle.x;
+        this.y = rectangle.y;
+        this.height = rectangle.height;
+        this.width = rectangle.width;
+
+      }
+    );
+
   }
 
   

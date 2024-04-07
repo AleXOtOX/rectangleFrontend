@@ -1,18 +1,17 @@
 .rectangle {
-    fill:rgb(121, 106, 106);
-    stroke: red;
-    stroke-width: 5px;
-    fill-opacity: 0.3;
+    fill:rgb(161, 148, 148);
 }
 
 .cursor {
-    fill:rgb(65, 61, 61);
-    stroke: rgb(18, 1, 1);
-    stroke-width: 5px;
     cursor: all-scroll;
+    fill-opacity: 1;
 }
 
-svg {
+.svgcontainer {
     border: 1px solid #aaa;
     vertical-align: top;
+}
+
+.spacer{
+    flex: 1 1 auto;
 }
