@@ -8,10 +8,10 @@ import { Observable, catchError, of } from 'rxjs';
 })
 export class PersistenceService {
 
-  private apiUrl = 'localhost:5062/api/rectangle';
+  private apiUrl = 'http://localhost:4200/api/rectangle';
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };
 
   constructor( private http:HttpClient) { }
@@ -22,6 +22,13 @@ export class PersistenceService {
     .pipe(
       catchError(this.handleError<Rectangle>('Error querying rectangle data'))
     );
+  }
+
+  updateRectangle(rectangle: Rectangle): Observable<any> {
+    return this.http.put(this.apiUrl,rectangle).pipe(
+      catchError(this.handleError<any>("Error updating rectangle"))
+    );
+
   }
   
   private handleError<T>(operation = 'operation', result?:T){

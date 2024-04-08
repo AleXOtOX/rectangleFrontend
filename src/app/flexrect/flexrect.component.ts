@@ -28,7 +28,6 @@ export class FlexrectComponent implements OnInit {
   ngOnInit() {
     this.getRectangle();
     this.cornerSize = 10;
-    this.perimeter = this.calculatePerimeter();
   }
 
   onMouseDown(event: MouseEvent,corner: string): void {
@@ -80,6 +79,8 @@ export class FlexrectComponent implements OnInit {
 
   onMouseUp(): void {
     this.isResizing = false;
+    this.persistence.updateRectangle({x:this.x,y:this.y,width:this.width,height:this.height})
+    .subscribe();
   }
 
   calculatePerimeter(): number {
@@ -93,9 +94,10 @@ export class FlexrectComponent implements OnInit {
         this.y = rectangle.y;
         this.height = rectangle.height;
         this.width = rectangle.width;
-
+        this.perimeter = this.calculatePerimeter();
       }
-    );
+    )
+    ;
 
   }
 

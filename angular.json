@@ -55,6 +55,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json",
+            "buildTarget": "liteboard:build"
+          },
           "configurations": {
             "production": {
               "buildTarget": "liteboard:build:production"
